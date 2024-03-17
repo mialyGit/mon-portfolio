@@ -7,69 +7,6 @@
 @push('css')
     <link href="{{ asset('assets/vendor/dropzone/theme.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/dropzone/dropzone.min.css') }}" rel="stylesheet">
-    <style>
-        #image-preview {
-          margin-top : 20px;
-        }
-    
-        .preview-image {
-          width: 200px;
-          height: 200px;
-          object-fit: cover;
-          border-radius: 10px;
-        }
-
-        .file-progress {
-          position: relative !important;
-          display: inline-block !important;
-          height: 3px !important;
-          width: 200px;
-          height: 200px;
-          margin: 20px 20px;
-        }
-    
-        .image-container {
-            position: relative;
-            display: inline-block;
-            margin: 20px 20px;
-            font-size: 10px;
-            border-radius: 10px;
-            border: 1px dashed #cbd5e1;
-        }
-
-        .close-button {
-            position: absolute;
-            top: 5px; /* Adjust the top position as needed */
-            right: 5px; /* Adjust the right position as needed */
-            font-size: 12px;
-            cursor: pointer;
-            color: white; /* Set the color as needed */
-            background-color: #ff00008f; /* Set the background color as needed */
-            padding: 2px 10px;
-            border-radius: 50%;
-        }
-
-        .close-button:hover {
-            background-color: red; /* Set the hover background color as needed */
-        }
-
-        .image-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            transition: bottom 0.5s ease-in-out;
-            background-color: rgba(0, 0, 0, 0.7); /* Adjust the background color and opacity as needed */
-            color: white; /* Set the text color as needed */
-            padding: 10px;
-            box-sizing: border-box;
-            display: none;
-        }
-
-        .image-info p {
-            margin: 0;
-        }
-      </style>
 @endpush
 
 @push('js')

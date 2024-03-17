@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-body">
                     <a href="{{ $media->getUrl() }}" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ $media->image }}" alt="{{ $media->filename }}" style="width: 100%; height: 200px">
+                        <img src="{{ $media->image }}" alt="{{ $media->filename }}" style="width: 100%; height: 200px; object-fit: contain;">
                     </a>
                 </div>
                 <div class="card-body">

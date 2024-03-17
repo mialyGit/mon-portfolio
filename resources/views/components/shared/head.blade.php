@@ -2,13 +2,11 @@
     'title' => '',
 ])
 
-<div class="row page-titles mx-0">
-  <div class="col-sm-6 p-md-0">
-    <div class="welcome-text">
-        <h4>@lang($title)</h4>
-    </div>
+<div class="app-title">
+  <div>
+    <h1><i class="fa fa-th-list"></i> @lang($title)</h1>
+    <p></p>
   </div>
-
   <x-shared.breadcrumb>
     @lang($title)
   </x-shared.breadcrumb>

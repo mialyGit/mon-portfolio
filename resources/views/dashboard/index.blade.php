@@ -6,4 +6,6 @@
 
 @section('content')
 
+<x-shared.head title="Dashboard" />
+
 @endsection

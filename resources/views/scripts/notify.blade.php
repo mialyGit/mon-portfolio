@@ -1,6 +1,13 @@
 @session('message')
-    <div class="alert alert-success alert-dismissible fade show">
-        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
-        </button> {{ session()->get('message') }} 
-    </div>
+    <script type="text/javascript">
+        $.notify({
+            message: "{{ session()->get('message') }}",
+            // icon: 'fa fa-check' 
+        },{
+            type: "success",
+            placement : {from:"bottom",align:"right"},
+            delay: 0,
+	        timer: 0,
+        });
+    </script>
 @endsession

@@ -30,14 +30,14 @@ class MediaController extends Controller
     {
         $mediaService->addMedias($request->get('dropzoneFiles', []));
 
-        return redirect()->route('dashboard.medias.index');
+        return redirect()->route('dashboard.medias.index')->with('message', __('Added with success'));
     }
 
     public function update(Request $request, Media $media, MediaService $mediaService)
     {
         $mediaService->updateMedias($request->only(['filename', 'alt']), $media);
 
-        return redirect()->route('dashboard.medias.index');
+        return redirect()->route('dashboard.medias.index')->with('message', __('Updated with success'));
     }
 
     public function edit(Media $media)

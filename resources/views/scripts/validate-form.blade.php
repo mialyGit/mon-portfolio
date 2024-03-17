@@ -8,14 +8,14 @@
             ignore: [],
             errorClass: "invalid-feedback animated fadeInUp",
             errorElement: "div",
-            errorPlacement: function(e, a) {
-                jQuery(a).parents(".form-group").append(e)
+            errorPlacement: function(error, element) {
+                jQuery(element).parents(".form-group").append(error)
             },
             highlight: function(e) {
-                jQuery(e).closest(".form-group").removeClass("is-invalid").addClass("is-invalid")
+                jQuery(e).removeClass("is-invalid").addClass("is-invalid")
             },
-            success: function(e) {
-                jQuery(e).closest(".form-group").removeClass("is-invalid"), jQuery(e).remove()
+            unhighlight: function(e) {
+                jQuery(e).removeClass("is-invalid")
             },
         });
     }

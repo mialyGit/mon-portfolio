@@ -32,12 +32,12 @@
         columns.push(action_column)
 
         // Set data to the datatables
-        var table = $('#example2').DataTable({
+        var table = $('#datatableId').DataTable({
             processing: true,
             serverSide: true,
             order: [],
             language : {
-                url : "{{ asset('assets/vendor/datatables/lang') }}"+'/'+language+'.json'
+                url : "{{ asset('assets/lang/datatables') }}"+'/'+language+'.json'
             },
             ajax: "{{ $src }}",
             columns: columns
@@ -51,52 +51,47 @@
                 text: "",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#0CC27E',
-                cancelButtonColor: '#FF586B',
-                confirmButtonText: " <span class=\"btn-icon\"><i class=\"fa fa-check\"></i></span> @lang('Confirm')",
-                cancelButtonText: " <span class=\"btn-icon\"><i class=\"fa fa-close\"></i></span> @lang('Cancel')",
+                confirmButtonText: "@lang('Confirm')",
+                cancelButtonText: "@lang('Cancel')",
                 confirmButtonClass: 'btn btn-primary mr-4',
                 cancelButtonClass: 'btn btn-light',
-                buttonsStyling: false
-            }).then(function (e) {
+                buttonsStyling: false,
+                
+            }, function(isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        url,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'DELETE',
+                        data: { method: '_DELETE' , submit : true },
+                        success : function (data) {
+                            // swal({
+                            //     title: data?.message,
+                            //     type: 'success'
+                            // })
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(xhr.status, status, error);
+                            let message = xhr.responseJSON?.message
+                            if(message && message.includes('Integrity constraint violation')) {
+                                message = 'Can not delete this because this row because it is associate with another model'
+                            }
+                            swal({
+                                type: 'error',
+                                title: error +' ('  +xhr.status+')',
+                                text: message
+                            });
 
-                if(e.dismiss) return;
-
-                $.ajax({
-                    url,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: 'DELETE',
-                    data: { method: '_DELETE' , submit : true },
-                    success : function (data) {
-                        swal({
-                            title: data?.message,
-                            type: 'success'
-                        })
-                    },
-                    error: function(xhr, status, error) {
-                        console.log(xhr.status, status, error);
-                        let message = xhr.responseJSON?.message
-                        if(message && message.includes('Integrity constraint violation')) {
-                            message = 'Can not delete this because this row because it is associate with another model'
                         }
-                        swal({
-                            type: 'error',
-                            title: error +' ('  +xhr.status+')',
-                            text: message
-                        });
 
-                    }
+                    }).always(function (data) {
 
-                }).always(function (data) {
+                        table.ajax.reload();
 
-                    table.ajax.reload();
-
-                });
-
-            }, function (dismiss) {
-
+                    });
+                }
             });
         });
          
@@ -106,21 +101,19 @@
 
 <div class="row">
     <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="display" id="example2" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                @foreach($data as $column)
-                                    <th>@lang($column['header'])</th>
-                                @endforeach
-                                <th class="action">@lang('Action')</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
+        <div class="tile">
+            <div class="tile-body">
+                <table class="table table-hover table-bordered" id="datatableId" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            @foreach($data as $column)
+                                <th>@lang($column['header'])</th>
+                            @endforeach
+                            <th class="action">@lang('Action')</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
     </div>

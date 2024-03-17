@@ -4,16 +4,11 @@
     @lang('Medias')
 @endpush
 
-@push('css')
-    <link href="{{ asset('assets/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/select2/css/select2.min.css') }}" rel="stylesheet">
-@endpush
-
 @push('js')
-    <script src="{{ asset('assets/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/sweetalert.min.js') }}"></script>
     <script>
         $("#type-media").select2({
             placeholder: "Filter by type",
@@ -27,13 +22,11 @@
 
     <div class="row mb-2">
         <div class="col col-md-4">
-            <div class="form-group">
-                <select id="type-media">
-                    <option></option>
-                    <option value="AL">Image</option>
-                    <option value="WY">PDF</option>
-                </select>
-            </div>
+            <select class="form-control" id="type-media">
+                <option></option>
+                <option value="AL">Image</option>
+                <option value="WY">PDF</option>
+            </select>
         </div>
         <div class="col text-right">
             <x-buttons.add href="{{ route('dashboard.medias.create') }}"></x-buttons.add>

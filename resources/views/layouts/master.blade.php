@@ -11,101 +11,66 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset ('assets/images/favicon.png') }}">
     <!-- Custom Stylesheet -->
     @stack('css')
-    <link href="{{ asset ('assets/css/style.css') }}" rel="stylesheet">
-
+    <link href="{{ asset ('assets/css/main.css') }}" rel="stylesheet">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 </head>
 
-<body>
-
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div id="preloader">
-        <div class="sk-three-bounce">
-            <div class="sk-child sk-bounce1"></div>
-            <div class="sk-child sk-bounce2"></div>
-            <div class="sk-child sk-bounce3"></div>
-        </div>
-    </div>
-    <!--*******************
-        Preloader end
-    ********************-->
-
+<body class="app sidebar-mini rtl">
 
     <!--**********************************
-        Main wrapper start
+        Header start
     ***********************************-->
-    <div id="main-wrapper">
-
-        <!--**********************************
-            Nav header start
-        ***********************************-->
-        @include('partials.nav-header')
-        <!--**********************************
-            Nav header end
-        ***********************************-->
-
-        <!--**********************************
-            Header start
-        ***********************************-->
-        @include('partials.header')
-        <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
-
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-        @include('partials.sidebar')
-
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
-
-        <!--**********************************
-            Content body start
-        ***********************************-->
-        <div class="content-body">
-            <div class="container-fluid">
-                @yield('content')
-            </div>
-        </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-
-
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        @include('partials.footer')
-        <!--**********************************
-            Footer end
-        ***********************************-->
-
-        <!--**********************************
-           Support ticket button start
-        ***********************************-->
-
-        <!--**********************************
-           Support ticket button end
-        ***********************************-->
-
-        
-    </div>
+    @include('partials.header')
     <!--**********************************
-        Main wrapper end
+        Header end ti-comment-alt
+    ***********************************-->
+
+    <!--**********************************
+        Sidebar start
+    ***********************************-->
+    @include('partials.sidebar')
+
+    <!--**********************************
+        Sidebar end
+    ***********************************-->
+
+    <!--**********************************
+        Content body start
+    ***********************************-->
+    <main class="app-content">
+        @yield('content')
+    </main>
+    <!--**********************************
+        Content body end
+    ***********************************-->
+
+
+    <!--**********************************
+        Footer start
+    ***********************************-->
+
+    <!--**********************************
+        Footer end
     ***********************************-->
 
     <!--**********************************
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="{{ asset ('assets/vendor/global/global.min.js') }}"></script>
-    <script src="{{ asset ('assets/js/quixnav-init.js') }}"></script>
-    <script src="{{ asset ('assets/js/custom.min.js') }}"></script>
-    @stack('js')
+    <script src="{{ asset ('assets/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset ('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset ('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset ('assets/js/main.js') }}"></script>
 
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="{{ asset ('assets/js/plugins/pace.min.js') }}"></script>
+    <script src="{{ asset ('assets/js/plugins/bootstrap-notify.min.js') }}"></script>
+
+    @include('scripts.notify')
+    
+    @stack('js')
 </body>
 
 </html>

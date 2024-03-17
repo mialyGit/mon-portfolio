@@ -1,31 +1,31 @@
 
-<div class="quixnav">
-    <div class="quixnav-scroll">
-        <ul class="metismenu" id="menu">
-            <li class="nav-label first">@lang('Main Menu')</li>
-            <li>
-                <a href="{{ route('dashboard.index') }}" aria-expanded="false">
-                    <i class="icon icon-chart-bar-33"></i>
-                    <span class="nav-text">@lang('Dashboard')</span>
-                </a>
-            </li>     
-
-            <li class="nav-label">@lang('Apps')</li>
-            <li>
-                <a href="{{ route('dashboard.profile') }}" aria-expanded="false">
-                    <i class="icon icon-single-04"></i>
-                    <span class="nav-text">@lang('Profile')</span>
-                </a>
-            </li>  
-            
-            <li class="nav-label">@lang('Others')</li>
-            <li>
-                <a href="{{ route('dashboard.medias.index') }}" aria-expanded="false">
-                    <i class="icon icon-app-store"></i>
-                    <span class="nav-text">@lang('Medias')</span>
-                </a>
-            </li>  
-            
-        </ul>
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+    <div class="app-sidebar__user">
+        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style="width: 50px;" alt="Avatar" />
+        <div class="ml-2">
+            <p class="app-sidebar__user-name">Mialison</p>
+            <p class="app-sidebar__user-designation">@lang('Fullstack developer')</p>
+        </div>
     </div>
-</div>
+    <ul class="app-menu">
+        <li>
+            <a class="app-menu__item" href="{{ route('dashboard.index') }}">
+                <i class="app-menu__icon fa fa-dashboard"></i>
+                <span class="app-menu__label">@lang('Dashboard')</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item" href="{{ route('dashboard.profile') }}">
+                <i class="app-menu__icon fa fa-user"></i>
+                <span class="app-menu__label">@lang('Profile')</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item" href="{{ route('dashboard.medias.index') }}">
+                <i class="app-menu__icon fa fa-th-list"></i>
+                <span class="app-menu__label">@lang('Medias')</span>
+            </a>
+        </li>
+    </ul>
+</aside>

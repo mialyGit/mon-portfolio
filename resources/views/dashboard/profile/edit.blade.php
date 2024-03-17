@@ -44,8 +44,6 @@
 
 <x-shared.head title="My Profile" />
 
-@include('scripts.notify')
-
 <div class="card mt-4">  
     <div class="card-body">
         <div class="basic-form">
