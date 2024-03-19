@@ -16,19 +16,20 @@
   }
 
   .preview-image {
-    width: 200px;
-    height: 200px;
+    width: 200px !important;
+    height: 200px !important;
     object-fit: cover;
-    border-radius: 10px;
+    background-color: #fff;
   }
 
   .file-progress {
-    position: relative !important;
-    display: inline-block !important;
-    height: 3px !important;
-    width: 200px;
-    height: 200px;
-    margin: 20px 20px;
+    position: absolute !important;
+    bottom: 40%;
+    left: 0;
+    height: 10px !important;
+    width: 160px;
+    margin: 10px 20px;
+    background-color: #E5E5E5;
   }
 
   .image-container {
@@ -36,8 +37,15 @@
       display: inline-block;
       margin: 20px 20px;
       font-size: 10px;
-      border-radius: 10px;
-      border: 1px dashed #cbd5e1;
+      border-radius: 0.25rem;
+      border: none !important;
+  }
+
+  .progress-bar {
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    width: 100%;
   }
 
   .close-button {
@@ -54,6 +62,114 @@
 
   .close-button:hover {
       background-color: red; /* Set the hover background color as needed */
+  }
+
+  .icon-trash {
+    position: absolute;
+    top: 7px; /* Adjust the top position as needed */
+    right: 5px; /* Adjust the right position as needed */
+    font-size: 12px;
+    cursor: pointer; /* Set the background color as needed */
+    padding: 2px 10px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .icon-trash:hover .trash-lid {
+    background-color: red;
+    -webkit-transform: rotate(-5deg);
+    -moz-transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
+    transform: rotate(-5deg); 
+  }
+
+  .icon-trash:hover .trash-container {
+    background-color: red;
+  }
+
+  .icon-trash .trash-lid {
+    width: 64%;
+    height: 10%;
+    position: absolute;
+    left: 50%;
+    margin-left: -31%;
+    top: 10.5%;
+    background-color: #ff00008f;
+    border-top-left-radius: 80%;
+    border-top-right-radius: 80%;
+  }
+
+  .icon-trash .trash-container {
+    width: 61%;
+    height: 65%;
+    position: absolute;
+    left: 50%;
+    margin-left: -28%;
+    bottom: 10%;
+    background-color: #ff00008f;
+    border-bottom-left-radius: 15%;
+    border-bottom-right-radius: 15%;
+  }
+
+  .icon-trash .trash-container:after {
+    content: "";
+    width: 110%;
+    height: 12%;
+    position: absolute;
+    left: 50%;
+    margin-left: -55%;
+    top: 0;
+    background-color: inherit;
+    border-bottom-left-radius: 45%;
+    border-bottom-right-radius: 45%;
+  }
+
+  .icon-trash .trash-line-1 {
+    width: 4%;
+    height: 50%;
+    position: absolute;
+    left: 38%;
+    margin-left: -2%;
+    bottom: 17%;
+    background-color: #fff;
+  }
+
+  .icon-trash .trash-line-2 {
+    width: 4%;
+    height: 50%;
+    position: absolute;
+    left: 50%;
+    margin-left: -2%;
+    bottom: 17%;
+    background-color: #fff;
+  }
+  
+  .icon-trash .trash-line-3 {
+    width: 4%;
+    height: 50%;
+    position: absolute;
+    left: 65%;
+    margin-left: -2%;
+    bottom: 17%;
+    background-color: #fff;
+  }
+  
+
+  .icon-trash .trash-lid:after {
+    content: "";
+    width: 26%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: -13%;
+    margin-top: -10%;
+    background-color: inherit;
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+    -webkit-transform: rotate(-1deg);
+    -moz-transform: rotate(-1deg);
+    -ms-transform: rotate(-1deg);
+    transform: rotate(-1deg); 
   }
 
   .image-info {

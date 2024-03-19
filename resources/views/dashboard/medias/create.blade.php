@@ -33,11 +33,16 @@
                 var filePreview = {...response};
 
                 var previewDiv = document.getElementById("image-preview");
-                var imageContainer = document.createElement("div");
-                imageContainer.classList.add("image-container");
-                var removeButton = document.createElement("span");
-                removeButton.classList.add("close-button");
-                removeButton.textContent = 'x';
+                var imageContainer = file.imageContainer;
+                var removeButton = document.createElement("div");
+                removeButton.classList.add("icon-trash");
+                removeButton.innerHTML = `
+                    <div class="trash-lid"></div>
+                    <div class="trash-container"></div>
+                    <div class="trash-line-1"></div>
+                    <div class="trash-line-2"></div>
+                    <div class="trash-line-3"></div>
+                `;
 
                 removeButton.addEventListener("click", function () {
                     // Clear the Dropzone
@@ -47,7 +52,7 @@
 
                 imageContainer.innerHTML = `
                     <a href="${filePreview.path}" target="_blank">
-                        <img class="preview-image" src="${filePreview.path}">
+                        <img class="preview-image img-thumbnail" src="${filePreview.path}">
                         <div class="image-info">
                             <p> Name : ${filePreview.name} </p>
                             <p> Size : ${filePreview.size} </p>
@@ -79,14 +84,24 @@
             },
             addedfile: function (file) {
                 var previewProgress = document.createElement("div");
-                previewProgress.classList.add("progress", "file-progress");
+                var imageContainer = document.createElement("div");
+                imageContainer.classList.add("image-container");
+
+                imageContainer.innerHTML = `
+                    <img class="preview-image img-thumbnail">
+                `;
+
+                previewProgress.classList.add("file-progress");
 
                 previewProgress.innerHTML = `
-                    <div class="progress-bar bg-info progress-bar-striped" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height:3px;" role="progressbar">
+                    <div class="progress-bar bg-primary progress-bar-striped" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height:10px;" role="progressbar">
                     </div>
                 `;
+                imageContainer.appendChild(previewProgress)
+
                 file.previewProgress = previewProgress
-                document.getElementById("image-preview").appendChild(previewProgress);
+                file.imageContainer = imageContainer
+                document.getElementById("image-preview").appendChild(imageContainer);
                 
             },
             uploadprogress: function (file, progress) {
