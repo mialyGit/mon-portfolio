@@ -11,13 +11,10 @@
     --geeks-gutter-y: 0;
 }
 
-#image-preview {
-    margin-top : 20px;
-  }
 
   .preview-image {
-    width: 200px !important;
-    height: 200px !important;
+    width: 170px !important;
+    height: 170px !important;
     object-fit: cover;
     background-color: #fff;
   }
@@ -27,7 +24,7 @@
     bottom: 40%;
     left: 0;
     height: 10px !important;
-    width: 160px;
+    width: 130px;
     margin: 10px 20px;
     background-color: #E5E5E5;
   }
@@ -35,10 +32,10 @@
   .image-container {
       position: relative;
       display: inline-block;
-      margin: 20px 20px;
+      margin: 10px 10px;
       font-size: 10px;
       border-radius: 0.25rem;
-      border: none !important;
+      border: none;
   }
 
   .progress-bar {
@@ -187,4 +184,21 @@
 
   .image-info p {
       margin: 0;
+  }
+
+  .edit-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 30px;
+    padding-top: 5px;
+    border-radius: 50%;
+    font-size: 17px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .edit-icon i {
+    color: #009688; /* Adjust color as needed */
+    font-weight: bolder;
   }

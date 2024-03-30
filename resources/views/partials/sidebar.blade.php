@@ -1,8 +1,7 @@
-
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
     <div class="app-sidebar__user">
-        <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style="width: 50px;" alt="Avatar" />
+        <img src="{{ asset('assets/images/mialy.jpg') }}" class="rounded-circle" style="width: 50px;" alt="Avatar" />
         <div class="ml-2">
             <p class="app-sidebar__user-name">Mialison</p>
             <p class="app-sidebar__user-designation">@lang('Fullstack developer')</p>

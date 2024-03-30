@@ -18,8 +18,8 @@
 
         Dropzone.options.myDropzone = {
             url: "{{ route('dashboard.file.upload') }}",
-            parallelUploads : 1,
-            headers, 
+            parallelUploads: 1,
+            headers,
             paramName: "file",
             maxFilesize: 5,
             dictDefaultMessage: "Drag and drop your files here or click to choose",
@@ -30,7 +30,9 @@
                 var thisDropzone = this;
                 file.temporary_name = response.temporary_name
 
-                var filePreview = {...response};
+                var filePreview = {
+                    ...response
+                };
 
                 var previewDiv = document.getElementById("image-preview");
                 var imageContainer = file.imageContainer;
@@ -44,7 +46,7 @@
                     <div class="trash-line-3"></div>
                 `;
 
-                removeButton.addEventListener("click", function () {
+                removeButton.addEventListener("click", function() {
                     // Clear the Dropzone
                     imageContainer.remove();
                     thisDropzone.removeFile(file);
@@ -60,12 +62,12 @@
                     </a>
                 `;
 
-                imageContainer.addEventListener("mouseover", function () {
+                imageContainer.addEventListener("mouseover", function() {
                     // Clear the Dropzone
                     this.querySelector('.image-info').style.display = 'block';
                 });
 
-                imageContainer.addEventListener("mouseout", function () {
+                imageContainer.addEventListener("mouseout", function() {
                     // Clear the Dropzone
                     this.querySelector('.image-info').style.display = 'none';
                 });
@@ -82,7 +84,7 @@
 
                 document.getElementById("submit-dropzone").appendChild(hiddenInput);
             },
-            addedfile: function (file) {
+            addedfile: function(file) {
                 var previewProgress = document.createElement("div");
                 var imageContainer = document.createElement("div");
                 imageContainer.classList.add("image-container");
@@ -102,61 +104,65 @@
                 file.previewProgress = previewProgress
                 file.imageContainer = imageContainer
                 document.getElementById("image-preview").appendChild(imageContainer);
-                
+
             },
-            uploadprogress: function (file, progress) {
+            uploadprogress: function(file, progress) {
                 file.previewProgress.firstElementChild.style.width = `${progress}%`;
             },
-            removedfile : function(file) {
+            removedfile: function(file) {
                 fetch("{{ route('dashboard.file.remove') }}", {
-                    method : 'POST',
-                    headers : { ...headers, 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ filename : file.temporary_name })
-                })
-                .then(response => {
-                    // Check if the request was successful (status code 2xx)
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
+                        method: 'POST',
+                        headers: {
+                            ...headers,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            filename: file.temporary_name
+                        })
+                    })
+                    .then(response => {
+                        // Check if the request was successful (status code 2xx)
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
 
-                    // Parse the response as JSON
-                    return response.json();
-                })
-                .then(data => {
-                    // Process the JSON data
-                    console.log('Response:', data);
-                    // Find the element with the specified value
-                    var elementsToRemove = document.querySelectorAll('.file-value[value="' + file.temporary_name + '|' + file.name + '"]');
+                        // Parse the response as JSON
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Process the JSON data
+                        console.log('Response:', data);
+                        // Find the element with the specified value
+                        var elementsToRemove = document.querySelectorAll('.file-value[value="' + file
+                            .temporary_name + '|' + file.name + '"]');
 
-                    // Remove each matching element
-                    elementsToRemove.forEach(function (element) {
-                        element.parentNode.removeChild(element);
-                    });
+                        // Remove each matching element
+                        elementsToRemove.forEach(function(element) {
+                            element.parentNode.removeChild(element);
+                        });
 
-                })
+                    })
                 // .catch(error => {
                 //     console.error('Error:', error);
                 // });
             }
         };
     </script>
-
 @endpush
 
 @section('content')
-
     <x-shared.head title="Import Medias" />
 
-    
+
     <div id="image-preview" class="mb-2"></div>
 
     <div class="row mb-2">
-        <div class="col"> 
+        <div class="col">
             <div class="dropzone mt-4 border-dashed" id="myDropzone">
                 <div class="fallback">
                     <input name="file" type="file" multiple />
                 </div>
-           </div>	
+            </div>
         </div>
     </div>
 
@@ -165,5 +171,4 @@
         <x-buttons.save></x-buttons.save>
         <x-buttons.cancel class="ml-2" href="{{ route('dashboard.medias.index') }}"></x-buttons.cancel>
     </form>
-
 @endsection

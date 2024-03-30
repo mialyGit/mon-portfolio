@@ -9,6 +9,11 @@ class Media extends MediableMedia
 {
     use HasFactory;
 
+    protected $appends = [
+        'image',
+        'human_readable_size',
+    ];
+
     public function getImageAttribute()
     {
         if (str_contains($this->mime_type, 'image')) {
@@ -16,5 +21,10 @@ class Media extends MediableMedia
         }
 
         return asset(get_logo($this->mime_type));
+    }
+
+    public function getHumanReadableSizeAttribute()
+    {
+        return $this->readableSize(2);
     }
 }

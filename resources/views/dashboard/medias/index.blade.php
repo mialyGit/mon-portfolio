@@ -34,14 +34,12 @@
     </div>
 
 
-    <x-datatables
-        :data="[
-            ['header' => '', 'name' => 'image', 'width' => '10%'],
-            ['header' => 'Nom du fichier', 'name' => 'filename'],
-            ['header' => 'Extension', 'name' => 'extension'],
-            ['header' => 'Size', 'name' => 'size'],
-            ['header' => 'Updated date', 'name' => 'updated_at'],
-            ['header' => 'Type', 'name' => 'aggregate_type'],
-        ]"
-    />
+    <x-datatables :data="[
+        ['header' => '', 'name' => 'dt_image', 'width' => '10%'],
+        ['header' => 'Nom du fichier', 'name' => 'filename'],
+        ['header' => 'Extension', 'name' => 'extension'],
+        ['header' => 'Size', 'name' => 'size'],
+        ['header' => 'Updated date', 'name' => 'updated_at'],
+        ['header' => 'Type', 'name' => 'aggregate_type'],
+    ]" />
 @endsection

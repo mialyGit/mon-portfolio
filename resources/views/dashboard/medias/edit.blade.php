@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-body">
                     <p> <b> @lang('Filename')</b> : {{ $media->filename }} </p>
-                    <p> <b> @lang('Size')</b> : {{ $media->readableSize(2) }} </p>
+                    <p> <b> @lang('Size')</b> : {{ $media->human_readable_size }} </p>
                     <p> <b> @lang('Type')</b> : {{ $media->aggregate_type }} </p>
                 </div>
             </div>

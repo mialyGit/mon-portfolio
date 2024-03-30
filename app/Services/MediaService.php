@@ -2,13 +2,19 @@
 
 namespace App\Services;
 
+use App\Models\Media;
 use Illuminate\Support\Facades\Storage;
 use Plank\Mediable\Facades\MediaUploader;
 use Plank\Mediable\Helpers\File;
-use Plank\Mediable\Media;
+use Plank\Mediable\Media as MediableMedia;
 
 class MediaService
 {
+    public function getMedias()
+    {
+        return Media::all();
+    }
+
     public function addMedias(array $files): array
     {
         $medias = [];
@@ -19,7 +25,7 @@ class MediaService
             $source = Storage::disk('public')->path($path);
             $medias[] = MediaUploader::fromSource($source)
                 ->useFilename(pathinfo($original_name, PATHINFO_FILENAME))
-                ->beforeSave(function (Media $media) {
+                ->beforeSave(function (MediableMedia $media) {
                     $media->setAttribute('alt', $media->filename);
                 })
                 ->upload();

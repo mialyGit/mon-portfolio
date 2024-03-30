@@ -13,7 +13,7 @@ class MediaDataTable extends BaseDataTable
             ->editColumn('size', function (Media $media) {
                 return $media->readableSize(2);
             })
-            ->addColumn('image', function (Media $media) {
+            ->addColumn('dt_image', function (Media $media) {
                 return view('components.datatables.image', [
                     'src' => $media->image,
                 ]);

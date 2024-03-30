@@ -28,6 +28,7 @@ Route::group([
     Route::post('/profile/save', 'ProfileController@save')->name('profile.save');
 
     Route::resource('medias', 'MediaController');
+    Route::get('/galleries', 'GalleryController@getMedias')->name('galleries');
 
     Route::post('/upload-file', 'UploadController@uploadFile')->name('file.upload');
     Route::post('/remove-file', 'UploadController@removeFile')->name('file.remove');

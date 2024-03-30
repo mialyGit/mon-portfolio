@@ -28,6 +28,7 @@ class SaveProfileRequest extends FormRequest
             'address' => 'nullable|string',
             'phone_1' => 'nullable|string',
             'phone_2' => 'nullable|string',
+            'profile_photo' => 'nullable|array',
         ];
     }
 }
