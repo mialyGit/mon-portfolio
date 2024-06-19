@@ -125,7 +125,7 @@
                             @foreach ($data as $column)
                                 <th>@lang($column['header'])</th>
                             @endforeach
-                            <th class="action">@lang('Action')</th>
+                            <th class="action" style="width: 18%">@lang('Action')</th>
                         </tr>
                     </thead>
                 </table>

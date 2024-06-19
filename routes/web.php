@@ -32,4 +32,6 @@ Route::group([
 
     Route::post('/upload-file', 'UploadController@uploadFile')->name('file.upload');
     Route::post('/remove-file', 'UploadController@removeFile')->name('file.remove');
+
+    Route::resource('skills', 'SkillController');
 });

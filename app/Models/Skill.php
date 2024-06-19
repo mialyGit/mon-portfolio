@@ -14,4 +14,9 @@ class Skill extends Model
         'name',
         'is_visible',
     ];
+
+    public function getIconAttribute($value)
+    {
+        return html_entity_decode($value);
+    }
 }

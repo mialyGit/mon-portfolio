@@ -12,6 +12,7 @@
     <!-- Custom Stylesheet -->
     @stack('css')
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
     <!-- Font-icon css-->
     {{-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
     <link href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
