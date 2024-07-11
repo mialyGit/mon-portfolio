@@ -68,6 +68,12 @@
             url: "{{ route('dashboard.galleries') }}",
             success: function(data) {
                 var content = '';
+                if (!data.length) {
+                    content += `
+                        <x-galleries.no-item />
+                    `;
+                }
+
                 data.forEach((item, key) => {
                     content += `
                         <x-galleries.item key="${item.id}" filename="${item.filename}" src="${item.image}" alt="${item.alt}" size="${item.human_readable_size}" />

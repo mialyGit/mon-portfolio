@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('preview')->nullable();
             $table->string('code')->nullable();
             $table->boolean('is_visible')->default(true);
-            $table->integer('order')->nullable()->default(1);
 
             $table->foreign('experience_id')->references('id')->on('experiences')->onDelete('set null');
             $table->timestamps();

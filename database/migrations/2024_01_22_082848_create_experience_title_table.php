@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('experience_titles', function (Blueprint $table) {
+        Schema::create('experience_title', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('experience_id');
             $table->unsignedInteger('title_id');
+            $table->unsignedInteger('order')->nullable()->default(1);
 
             $table->foreign('experience_id')->references('id')->on('experiences')->onDelete('cascade');
             $table->foreign('title_id')->references('id')->on('titles')->onDelete('cascade');
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('experience_titles');
+        Schema::dropIfExists('experience_title');
     }
 };

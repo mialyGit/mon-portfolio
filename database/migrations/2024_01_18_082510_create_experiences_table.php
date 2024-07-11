@@ -19,7 +19,6 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->boolean('is_formation')->default(false);
             $table->boolean('is_visible')->default(true);
-            $table->integer('order')->nullable()->default(1);
             $table->timestamps();
         });
     }
